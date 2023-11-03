@@ -1,5 +1,4 @@
 # 📚 kwslogger: Your Custom Logging Solution! 🚀
-
 Welcome to `kwslogger`, a tailored logging solution for Python developers who desire more color and style in their logs.
 
 ## 🌟 Features
@@ -13,7 +12,6 @@ pip install kwslogger
 
 ## 🚀 Usage
 ```python
-import time
 from kwslogger import Logger
 
 """
@@ -36,9 +34,18 @@ logger.warning("I'm a warning!")
 logger.error("I'm an error!")
 logger.input("I'm an input message!")
 logger.ratelimit("I'm a rate limit message!")
+```
 
-# Wait for 3 seconds using spinners
+You can also make animated sleeps
+```python
+from kwslogger import Logger
+
 logger.sleep("Waiting for 1 second...", 1)
+```
+
+Or run functions while you show a spinner
+```python
+from kwslogger import Logger
 
 def test_func(number1, number2):
     answer = number1 + number2
