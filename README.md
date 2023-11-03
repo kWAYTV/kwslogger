@@ -40,12 +40,18 @@ You can also make animated sleeps
 ```python
 from kwslogger import Logger
 
+# Create a logger instance
+logger = Logger(debug=True)
+
 logger.sleep("Waiting for 1 second...", 1)
 ```
 
 Or run functions while you show a spinner
 ```python
 from kwslogger import Logger
+
+# Create a logger instance
+logger = Logger(debug=True)
 
 def test_func(number1, number2):
     answer = number1 + number2
