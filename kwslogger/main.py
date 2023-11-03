@@ -1,6 +1,6 @@
 from os import system, name
-from ..utils.date import DateTime
-from ..utils.spinners import Spinners
+from kwslogger.utils.date import DateHelper
+from kwslogger.utils.spinners import Spinners
 from colorama import Fore, Style, init
 
 
@@ -52,9 +52,9 @@ class Logger:
         Displays a spinner with the specified name and waits for the specified number of seconds.
     """
     def __init__(self, debug: bool = False):
-        self.debug = debug
+        self.debug_active = debug
         self.spinners = Spinners()
-        self.datetime_helper = DateTime()
+        self.datetime_helper = DateHelper()
 
         # Initialize colorama
         init(autoreset=True)
@@ -178,23 +178,10 @@ class Logger:
         message : str
             The message to be logged.
         """
-        if not self.debug: return
+        if not self.debug_active: return
         return self._log("DEBUG", Fore.MAGENTA, message)
 
-    def random_spinner_wait(self, message: str, seconds: int) -> None:
-        """
-        Displays a random spinner and waits for the specified number of seconds.
-
-        Parameters:
-        -----------
-        message : str
-            The message to be displayed with the spinner.
-        seconds : int
-            The number of seconds to wait.
-        """
-        return self.spinners.random_spinner_wait(message, seconds)
-
-    def spinner_wait(self, name: str, message: str, seconds: int) -> None:
+    def spinner_wait(self, message: str, seconds: int) -> None:
         """
         Displays a spinner with the specified name and waits for the specified number of seconds.
 
@@ -207,4 +194,4 @@ class Logger:
         seconds : int
             The number of seconds to wait.
         """
-        return self.spinners.spinner_wait(name, message, seconds)
+        return self.spinners.wait_spinner(message, seconds)

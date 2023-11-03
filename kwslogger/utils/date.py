@@ -1,7 +1,7 @@
 import pytz
 from datetime import datetime
 
-class DateTime:
+class DateHelper:
     """
     A class for handling date and time operations.
 
