@@ -1,5 +1,6 @@
 # 📚 kwslogger: Your Custom Logging Solution! 🚀
 Welcome to `kwslogger`, a tailored logging solution for Python developers who desire more color and style in their logs.
+![Showcase](https://i.imgur.com/vyeT4DA.gif)
 
 ## 🌟 Features
 - 🎨 Colorful logs to easily differentiate log types.
