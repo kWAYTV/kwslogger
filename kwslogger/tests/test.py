@@ -6,7 +6,7 @@ It also waits for 3 seconds using a spinner and prompts the user to exit the pro
 """
 
 # Create a logger instance
-logger = Logger()
+logger = Logger(debug=True) # Default debug: False
 
 # Clear the console
 logger.clear()
