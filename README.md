@@ -17,7 +17,7 @@ Normal logs for your tools
 from kwslogger import Logger
 
 # Create a logger instance
-logger = Logger(debug=True, log_to_file=True, log_file_name="mylogs.log", log_file_mode="a")
+logger = Logger(debug=True, log_to_file=True, log_file_name="mylogs", log_file_mode="a")
 
 # Clear the console
 logger.clear()
