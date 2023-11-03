@@ -14,7 +14,7 @@ pip install kwslogger
 ```python
 import kwslogger
 
-# Create a logger
+# Create a logger instance
 logger = kwslogger.Logger()
 ```
 or
