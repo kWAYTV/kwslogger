@@ -3,11 +3,6 @@
 Welcome to `kwslogger`, a tailored logging solution for Python developers who desire more color and style in their logs.
 
 ## 🌟 Features
-
-<div align="center">
-  <img src="https://i.imgur.com/vyeT4DA.gif" alt="Showcase">
-</div>
-
 - 🎨 Colorful logs to easily differentiate log types.
 - 📅 Timestamped logs to understand when events occur.
 
