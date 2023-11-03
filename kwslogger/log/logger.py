@@ -38,3 +38,6 @@ class Logger:
 
     def ratelimit(self, message):
         self._log("RATELIMIT", Fore.YELLOW, message)
+
+    def welcome(self, message):
+        self._log("WELCOME", Fore.GREEN, message)

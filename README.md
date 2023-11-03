@@ -40,7 +40,7 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 If you like this project, please give it a ⭐️ and share it with your friends!
 
 ## 📄 License
-This project is [MIT](https://opensource.org/licenses/MIT) licensed ([Click here](LICENSE)).
+This project is [MIT](https://opensource.org/licenses/MIT) licensed, ([click here](LICENSE)) to see the license file.
 
 ---
 
