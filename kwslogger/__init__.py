@@ -1,1 +1,1 @@
-from .log.logger import Logger
+from kwslogger.log.logger import Logger
