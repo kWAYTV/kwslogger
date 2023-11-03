@@ -2,8 +2,7 @@ import time
 from kwslogger import Logger
 
 """
-This script demonstrates the usage of the kwslogger module by creating a logger instance and logging various messages using different log levels.
-It also waits for 3 seconds using a spinner and prompts the user to exit the program by pressing enter.
+This script demonstrates the usage of the kwslogger module.
 """
 
 # Create a logger instance
