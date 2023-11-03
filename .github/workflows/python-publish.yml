@@ -21,14 +21,15 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install build bump2version
-    - name: Bump version (patch)
-      run: bump2version patch
-    - name: Commit changes
+    - name: Set git user
       run: |
         git config --local user.email "admin@kwayservices.top"
         git config --local user.name "kWAY"
-        git commit -m "Bump version" -a
-        git push
+    - name: Bump version (patch)
+      run: bump2version patch
+    - name: Push changes
+      run: |
+        git push origin HEAD:<main> --follow-tags
     - name: Build package
       run: python -m build
     - name: Publish package
