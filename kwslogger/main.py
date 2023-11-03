@@ -1,7 +1,8 @@
 from os import system, name
+from colorama import Fore, Style, init
 from kwslogger.utils.date import DateHelper
 from kwslogger.utils.spinners import Spinners
-from colorama import Fore, Style, init
+from kwslogger.utils.logger import LoggerUtils
 
 
 class Logger:
@@ -12,6 +13,12 @@ class Logger:
     -----------
     debug : bool
         A flag to indicate whether debug messages should be logged or not.
+    log_to_file : bool
+        A flag to indicate whether messages should be logged to a file or not.
+    log_file_name : str
+        The name of the log file.
+    log_file_mode : str
+        The mode of the log file.
 
     Methods:
     --------
@@ -51,9 +58,13 @@ class Logger:
     run_with_spinner(func: callable, message: str = "", *args, **kwargs):
         Runs a function with the given arguments and keyword arguments while displaying a spinner.
     """
-    def __init__(self, debug: bool = False):
+    def __init__(self, debug: bool = False, log_to_file: bool = False, log_file_name = None, log_file_mode = None):
         self.debug_active = debug
+        self.log_to_file = log_to_file
+        self.log_file_name = log_file_name
+        self.log_file_mode = log_file_mode
         self.spinners = Spinners()
+        self.logger_utils = LoggerUtils()
         self.datetime_helper = DateHelper()
 
         # Initialize colorama
@@ -79,6 +90,12 @@ class Logger:
             The message to be logged.
         """
         current_time = self.datetime_helper.get_current_timestamp()
+
+        # File log (without color and style)
+        file_string = f"{current_time} • [{type}] {message}"
+        if self.log_to_file:
+            self.logger_utils.log_to_file(file_string, self.log_file_name, self.log_file_mode)
+
         return print(f"{Style.DIM}{current_time} • {Style.RESET_ALL}{Style.BRIGHT}{color}[{Style.RESET_ALL}{type}{Style.BRIGHT}{color}] {Style.RESET_ALL}{Style.BRIGHT}{Fore.WHITE}{message}{Style.RESET_ALL}")
 
     def info(self, message: str) -> None:

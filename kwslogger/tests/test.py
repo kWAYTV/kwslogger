@@ -6,7 +6,7 @@ This script demonstrates the usage of the kwslogger module.
 """
 
 # Create a logger instance
-logger = Logger(debug=True) # Default debug: False
+logger = Logger(debug=True, log_to_file=True, log_file_name="mylogs.log", log_file_mode="a")
 
 # Clear the console
 logger.clear()
