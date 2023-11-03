@@ -45,11 +45,11 @@ class Logger:
     debug(message: str) -> None:
         Logs a debug message if debug flag is set to True.
 
-    random_spinner_wait(message: str, seconds: int) -> None:
+    sleep(message: str, seconds: int) -> None:
         Displays a random spinner and waits for the specified number of seconds.
 
-    spinner_wait(name: str, message: str, seconds: int) -> None:
-        Displays a spinner with the specified name and waits for the specified number of seconds.
+    run_with_spinner(func: callable, message: str = "", *args, **kwargs):
+        Runs a function with the given arguments and keyword arguments while displaying a spinner.
     """
     def __init__(self, debug: bool = False):
         self.debug_active = debug
@@ -114,17 +114,6 @@ class Logger:
         """
         return self._log("WARNING", Fore.YELLOW, message)
 
-    def sleep(self, message: str) -> None:
-        """
-        Logs a sleep message.
-
-        Parameters:
-        -----------
-        message : str
-            The message to be logged.
-        """
-        return self._log("SLEEP", Fore.YELLOW, message)
-
     def error(self, message: str) -> None:
         """
         Logs an error message.
@@ -181,7 +170,7 @@ class Logger:
         if not self.debug_active: return
         return self._log("DEBUG", Fore.MAGENTA, message)
 
-    def spinner_wait(self, message: str, seconds: int) -> None:
+    def sleep(self, message: str, seconds: int) -> None:
         """
         Displays a spinner with the specified name and waits for the specified number of seconds.
 
@@ -194,4 +183,17 @@ class Logger:
         seconds : int
             The number of seconds to wait.
         """
-        return self.spinners.wait_spinner(message, seconds)
+        return self.spinners.sleep_with_spinner(message, seconds)
+
+    def run_with_spinner(self, func: callable, message: str = "", *args, **kwargs):
+        """
+        Runs the given function with a spinner and message.
+
+        Parameters:
+        -----------
+        func : callable
+            The function to be run.
+        message : str
+            The message to be displayed with the spinner.
+        """
+        return self.spinners.func_with_spinner(func, message, *args, **kwargs)

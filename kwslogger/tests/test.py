@@ -1,7 +1,8 @@
+import time
 from kwslogger import Logger
 
 """
-Creates a logger using the kwslogger module and logs various messages using different log levels.
+This script demonstrates the usage of the kwslogger module by creating a logger instance and logging various messages using different log levels.
 It also waits for 3 seconds using a spinner and prompts the user to exit the program by pressing enter.
 """
 
@@ -18,13 +19,15 @@ logger.debug("I'm a debug message!")
 logger.success("I'm a success message!")
 logger.warning("I'm a warning!")
 logger.error("I'm an error!")
-logger.sleep("I'm a sleep message!")
 logger.input("I'm an input message!")
 logger.ratelimit("I'm a rate limit message!")
 
 # Wait for 3 seconds using spinners
-logger.spinner_wait("Waiting for 3 seconds...", 3)
+logger.sleep("Waiting for 1 second...", 1)
 
-# Wait for the user to input something to exit the program
-input("\nPress enter to exit...")
-exit()
+def test_func(number1, number2):
+    answer = number1 + number2
+    return answer
+
+result = logger.run_with_spinner(test_func, "Calculating...", 1, 1)
+print(str(result) + " (Func returned)")
