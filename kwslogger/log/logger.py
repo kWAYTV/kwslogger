@@ -1,7 +1,8 @@
 from os import system, name
+from ..utils.date import DateTime
+from ..utils.spinners import Spinners
 from colorama import Fore, Style, init
-from kwslogger.utils.datetime import DateTime
-from kwslogger.utils.spinners import Spinners
+
 
 class Logger:
     """
