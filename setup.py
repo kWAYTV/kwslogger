@@ -1,6 +1,12 @@
+"""
+Setup script for kwslogger package.
+
+This script installs the kwslogger package along with its dependencies.
+"""
+
 from setuptools import setup, find_packages
 
-VERSION = '0.1.6'
+VERSION = '0.1.8'
 DESCRIPTION = "My own logging library so i don't need to port it to every single project i make."
 
 setup(
@@ -11,6 +17,7 @@ setup(
         "requests",
         "colorama",
         "pytz",
+        "yaspin",
     ],
     author="kWAY",
     author_email="admin@kwayservices.top",
