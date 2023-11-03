@@ -11,6 +11,8 @@ pip install kwslogger
 ```
 
 ## 🚀 Usage
+
+Normal logs for your tools
 ```python
 from kwslogger import Logger
 
@@ -31,7 +33,7 @@ logger.input("I'm an input message!")
 logger.ratelimit("I'm a rate limit message!")
 ```
 
-You can also make animated sleeps
+Animated Sleeps
 ```python
 from kwslogger import Logger
 
@@ -41,7 +43,7 @@ logger = Logger(debug=True)
 logger.sleep("Waiting for 1 second...", 1)
 ```
 
-Or run functions while you show a spinner
+Run functions while you showing the spinner
 ```python
 from kwslogger import Logger
 
