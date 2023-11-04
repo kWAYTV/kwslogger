@@ -41,7 +41,7 @@ Animated Sleeps
 from kwslogger import Logger
 
 # Create a logger instance
-logger = Logger(log_level="ANY", log_to_file=True, log_file_name="mylogs", log_file_mode="a")
+logger = Logger()
 
 logger.sleep("Waiting for 1 second...", 1)
 ```
@@ -51,7 +51,7 @@ Run functions while you showing the spinner with an optional timer
 from kwslogger import Logger
 
 # Create a logger instance
-logger = Logger(log_level="ANY", log_to_file=True, log_file_name="mylogs", log_file_mode="a")
+logger = Logger()
 
 def test_func(number1, number2):
     answer = number1 + number2
@@ -84,7 +84,7 @@ Create progress bars with ease.
 import time
 from kwslogger import Logger
 
-logger = Logger(log_level="ANY", log_to_file=True, log_file_name="log.txt", log_file_mode="a")
+logger = Logger()
 
 for i in (logger.progress_bar(range(100), desc="Progress Bar", unit="items", unit_scale=True, unit_divisor=100, miniters=1, mininterval=0.1, maxinterval=1, dynamic_ncols=True, smoothing=0.3, bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]", leave=False)):
     time.sleep(0.1)
