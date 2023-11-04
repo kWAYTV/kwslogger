@@ -14,6 +14,9 @@ Welcome to `kwslogger`, a tailored logging solution for Python developers who de
 pip install kwslogger
 ```
 
+## 🤖 Documentation
+[Click me](https://docs.kwayservices.top/kwslogger/) to go to the library docs.
+
 ## 🚀 Usage
 
 Normal logs for your tools
