@@ -5,7 +5,7 @@ Welcome to `kwslogger`, a tailored logging solution for Python developers who de
 - 🎨 Colorful logs to easily differentiate log types.
 - 📅 Timestamped logs to understand when events occur.
 - 📝 Write your logs to a file with ease.
-- ⛔ Filter out logs with the low levels.
+- ⛔ Filter out logs with the log levels.
 - 📈 Progress bar & spinner support.
 
 ## ⚙️ Installation
