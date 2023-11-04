@@ -115,7 +115,6 @@ If you like this project, please give it a ⭐️ and share it with your friends
 
 ## 📝 Dependencies
 Those are the libraries we use for the logger! Thanks to all of them 🤍
-- [requests](https://requests.readthedocs.io/en/latest/)
 - [yaspin](https://github.com/pavdmyt/yaspin)
 - [tqdm](https://github.com/tqdm/tqdm)
 - [colorama](https://github.com/tartley/colorama)
