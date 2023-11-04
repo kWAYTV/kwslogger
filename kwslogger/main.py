@@ -29,7 +29,7 @@ class Logger:
     - welcome(message: str): Logs a welcome message.
     - debug(message: str): Logs a debug message if debug mode is active.
     - sleep(message: str, seconds: int): Sleeps for the given number of seconds with a spinner.
-    - run_with_spinner(func: callable, message: str = "", *args, **kwargs): Runs a function with a spinner.
+    - run_with_spinner(func: callable, message: str = "", timer: bool = Flase,*args, **kwargs): Runs a function with a spinner and optional timer.
     """
     def __init__(self, log_level: str = "ANY", log_to_file: bool = False, log_file_name: str = None, log_file_mode: str = None):
         """
@@ -158,17 +158,18 @@ class Logger:
         """
         return self.spinners.sleep_with_spinner(message, seconds)
 
-    def run_with_spinner(self, func: callable, message: str = "", *args, **kwargs):
+    def run_with_spinner(self, func: callable, message: str = "", timer: bool = False,  *args, **kwargs):
         """
         Runs a function with a spinner.
 
         Args:
         - func (callable): The function to run.
         - message (str): The message to display while running the function.
+        - timer (bool): Whether to display a timer or not.
         - *args: Positional arguments to pass to the function.
         - **kwargs: Keyword arguments to pass to the function.
         """
-        return self.spinners.func_with_spinner(func, message, *args, **kwargs)
+        return self.spinners.func_with_spinner(func, message, timer, *args, **kwargs)
     
     def can_log(self, type: str):
         """

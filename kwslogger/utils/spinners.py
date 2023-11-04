@@ -17,12 +17,12 @@ class Spinners:
             time.sleep(seconds)
             sp.ok("✔")
 
-    def func_with_spinner(self, func: callable, message: str = "", *args, **kwargs):
+    def func_with_spinner(self, func: callable, message: str = "", timer: bool = False, *args, **kwargs):
         """
         Runs a function with the given arguments and keyword arguments while displaying a spinner.
         """
         result = None
-        with yaspin(self.spinner_frames, text=message) as sp:
+        with yaspin(self.spinner_frames, text=message, timer=timer) as sp:
             result = func(*args, **kwargs)
             sp.ok("✔")
         return result

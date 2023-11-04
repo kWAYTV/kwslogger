@@ -45,7 +45,7 @@ logger = Logger(log_level="ANY", log_to_file=True, log_file_name="mylogs", log_f
 logger.sleep("Waiting for 1 second...", 1)
 ```
 
-Run functions while you showing the spinner
+Run functions while you showing the spinner with an optional timer
 ```python
 from kwslogger import Logger
 
@@ -56,7 +56,7 @@ def test_func(number1, number2):
     answer = number1 + number2
     return answer
 
-result = logger.run_with_spinner(test_func, "Calculating...", 1, 1)
+result = logger.run_with_spinner(test_func, "Calculating...", True, 1, 1)
 print(str(result) + " (Func returned)")
 ```
 
