@@ -4,6 +4,8 @@ Welcome to `kwslogger`, a tailored logging solution for Python developers who de
 ## 🌟 Features
 - 🎨 Colorful logs to easily differentiate log types.
 - 📅 Timestamped logs to understand when events occur.
+- 📝 Write your logs to a file with ease.
+- ⛔ Filter out logs with the low levels.
 
 ## ⚙️ Installation
 ```bash
@@ -56,6 +58,22 @@ def test_func(number1, number2):
 
 result = logger.run_with_spinner(test_func, "Calculating...", 1, 1)
 print(str(result) + " (Func returned)")
+```
+
+Filter out your logs with the built in log levels, anything above the level you set on the logger instace won't be logged nor written to the file.
+```text
+debug (0) --> info (1) --> welcome (2) --> success (3) --> warning (4) --> error (5) --> input (6) --> ratelimit (7) --> sleep (8) --> any (9)
+```
+Example:
+```python
+
+from kwslogger import Logger
+
+# Create a logger instance
+logger = Logger(log_level="WARNING", log_to_file=True, log_file_name="mylogs", log_file_mode="a")
+
+print(logger.can_log("INFO")) # --> True because it's below warning level. Would log and write to the file.
+print(logger.can_log("RATELIMIT")) # --> False because it's above the warning level. Wouldn't log nor write to the file.
 ```
 
 ## 🤝 Contributing
