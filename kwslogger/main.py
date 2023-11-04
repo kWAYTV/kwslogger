@@ -1,9 +1,10 @@
 from os import system, name
 from colorama import Fore, Style, init
 from kwslogger.utils.date import DateHelper
-from kwslogger.utils.spinners import Spinners
 from kwslogger.utils.logger import LoggerUtils
+from kwslogger.controllers.spinners import Spinners
 from kwslogger.controllers.loglevel import LogLevels
+from kwslogger.controllers.progress_bars import ProgressBars
 
 
 class Logger:
@@ -31,7 +32,7 @@ class Logger:
     - sleep(message: str, seconds: int): Sleeps for the given number of seconds with a spinner.
     - run_with_spinner(func: callable, message: str = "", timer: bool = Flase,*args, **kwargs): Runs a function with a spinner and optional timer.
     """
-    def __init__(self, log_level: str = "ANY", log_to_file: bool = False, log_file_name: str = None, log_file_mode: str = None):
+    def __init__(self, log_level: str = "ANY", log_to_file: bool = False, log_file_name: str = None, log_file_mode: str = None, log_file_format: str = ""):
         """
         Initializes a new instance of the Logger class.
 
@@ -48,6 +49,7 @@ class Logger:
         self.spinners = Spinners()
         self.logger_utils = LoggerUtils()
         self.datetime_helper = DateHelper()
+        self.progress_bars = ProgressBars()
         self.log_levels_controller = LogLevels()
 
         init(autoreset=True)
@@ -68,10 +70,11 @@ class Logger:
         - message (str): The message to log.
         """
         if not self.can_log(type): return
+        
         current_time = self.datetime_helper.get_current_timestamp()
         
-        file_string = f"{current_time} • [{type}] {message}"
         if self.log_to_file:
+            file_string = f"{current_time} • [{type}] {message}"
             self.logger_utils.log_to_file(file_string, self.log_file_name, self.log_file_mode)
 
         return print(f"{Style.DIM}{current_time} • {Style.RESET_ALL}{Style.BRIGHT}{color}[{Style.RESET_ALL}{type}{Style.BRIGHT}{color}] {Style.RESET_ALL}{Style.BRIGHT}{Fore.WHITE}{message}{Style.RESET_ALL}")
@@ -187,3 +190,15 @@ class Logger:
             False otherwise.
         """
         return self.log_levels_controller.should_log(type, self.log_level)
+
+    def progress_bar(self, iterable, desc: str = "Progress", *args, **kwargs):
+        """
+        Returns a progress bar.
+
+        Args:
+        - iterable (iterable): The iterable to loop over.
+        - desc (str): The description to display.
+        - *args: Positional arguments to pass to tqdm.
+        - **kwargs: Keyword arguments to pass to tqdm.
+        """
+        return self.progress_bars.progress_bar(iterable, desc, *args, **kwargs)

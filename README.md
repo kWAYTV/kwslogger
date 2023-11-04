@@ -6,6 +6,7 @@ Welcome to `kwslogger`, a tailored logging solution for Python developers who de
 - 📅 Timestamped logs to understand when events occur.
 - 📝 Write your logs to a file with ease.
 - ⛔ Filter out logs with the low levels.
+- 📈 Progress bar & spinner support.
 
 ## ⚙️ Installation
 ```bash
@@ -74,13 +75,34 @@ logger = Logger(log_level="WARNING", log_to_file=True, log_file_name="mylogs", l
 
 print(logger.can_log("INFO")) # --> True because it's below warning level. Would log and write to the file.
 print(logger.can_log("RATELIMIT")) # --> False because it's above the warning level. Wouldn't log nor write to the file.
+
+# You don't need to filter out the logs with this method, it's done automatically, this is just an example and a method added to check whether a log should be logged or not.
 ```
+
+Create progress bars with ease.
+```python
+import time
+from kwslogger import Logger
+
+logger = Logger(log_level="ANY", log_to_file=True, log_file_name="log.txt", log_file_mode="a")
+
+for i in (logger.progress_bar(range(100), desc="Progress Bar", unit="items", unit_scale=True, unit_divisor=100, miniters=1, mininterval=0.1, maxinterval=1, dynamic_ncols=True, smoothing=0.3, bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]", leave=False)):
+    time.sleep(0.1)
+```
+You can add as many arguments and customizations as the tqdm library supports.
 
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/kWAYTV/kwslogger/issues).
 
 ## 💖 Support
 If you like this project, please give it a ⭐️ and share it with your friends!
+
+## 📝 Dependencies
+Those are the libraries we use for the logger! Thanks to all of them 🤍
+- [requests](https://requests.readthedocs.io/en/latest/)
+- [yaspin](https://github.com/pavdmyt/yaspin)
+- [tqdm](https://github.com/tqdm/tqdm)
+- [colorama](https://github.com/tartley/colorama)
 
 ## 📄 License
 This project is [MIT](https://opensource.org/licenses/MIT) licensed, [click here](LICENSE) to see the license file.
