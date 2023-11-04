@@ -6,7 +6,7 @@ class ProgressBars:
     """
 
     def __init__(self):
-        self.controller = tqdm()
+        self.controller = tqdm
 
     def progress_bar(self, iterable, desc: str = "Progress", *args, **kwargs):
         """
@@ -18,4 +18,4 @@ class ProgressBars:
         - *args: Positional arguments to pass to tqdm.
         - **kwargs: Keyword arguments to pass to tqdm.
         """
-        return tqdm(iterable, desc=desc, *args, **kwargs)
+        return self.controller(iterable, desc=desc, *args, **kwargs)

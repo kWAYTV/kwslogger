@@ -7,6 +7,7 @@ Welcome to `kwslogger`, a tailored logging solution for Python developers who de
 - 📝 Write your logs to a file with ease.
 - ⛔ Filter out logs with the log levels.
 - 📈 Progress bar & spinner support.
+- 🤖 ASCII logo creation with just 1 call.
 
 ## ⚙️ Installation
 ```bash
@@ -90,6 +91,19 @@ for i in (logger.progress_bar(range(100), desc="Progress Bar", unit="items", uni
 ```
 You can add as many arguments and customizations as the tqdm library supports.
 
+Create logos with just 1 function
+```python
+from kwslogger import Logger
+
+logger = Logger()
+
+logger.create_logo("Pluto Reportbot")
+```
+You can use a custom `pyfiglet` font with the following
+```python
+logger.create_logo("Pluto Reportbot", font = "slant")
+```
+
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/kWAYTV/kwslogger/issues).
 
@@ -102,6 +116,8 @@ Those are the libraries we use for the logger! Thanks to all of them 🤍
 - [yaspin](https://github.com/pavdmyt/yaspin)
 - [tqdm](https://github.com/tqdm/tqdm)
 - [colorama](https://github.com/tartley/colorama)
+- [pyfiglet](https://github.com/pwaller/pyfiglet)
+- [pystyle](https://github.com/billythegoat356/pystyle)
 
 ## 📄 License
 This project is [MIT](https://opensource.org/licenses/MIT) licensed, [click here](LICENSE) to see the license file.

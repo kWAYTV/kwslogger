@@ -13,6 +13,7 @@ class Spinners:
         """
         Displays a random spinner with the given message for the specified number of seconds.
         """
+
         with yaspin(self.spinner_frames, text=message, timer=True) as sp:
             time.sleep(seconds)
             sp.ok("✔")
@@ -21,6 +22,7 @@ class Spinners:
         """
         Runs a function with the given arguments and keyword arguments while displaying a spinner.
         """
+
         result = None
         with yaspin(self.spinner_frames, text=message, timer=timer) as sp:
             result = func(*args, **kwargs)

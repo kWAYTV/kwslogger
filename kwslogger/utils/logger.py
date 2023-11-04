@@ -1,15 +1,63 @@
-class LoggerUtils:
-    def __init__(self):
-        pass
+from pyfiglet import Figlet
+from pystyle import Colors, Colorate, Center
 
-    def log_to_file(self, message, log_file: str ="mylogs", mode: str ="a"):
+class LoggerUtils:
+    """
+    A utility class for logging messages and creating logos.
+
+    Methods:
+    log_to_file(message: str, log_file: str = "mylogs", mode: str = "a") -> None:
+        Logs a message to a file.
+
+    create_logo(logo: str, font: str = "big") -> None:
+        Creates a logo using the specified font and displays it.
+
+    display_logo(logo: str) -> None:
+        Displays a logo.
+    """
+
+    def log_to_file(self, message: str, log_file: str = "mylogs", mode: str = "a") -> None:
         """
-        Logs the given message to a file.
+        Logs a message to a file.
 
         Args:
-            message (str): The message to be logged.
-            log_file (str, optional): The name of the log file. Defaults to "mylogs".
-            mode (str, optional): The mode in which the file should be opened. Defaults to "a".
+        message (str): The message to log.
+        log_file (str): The name of the log file. Defaults to "mylogs".
+        mode (str): The mode to open the file in. Defaults to "a" (append).
         """
+        if not message:
+            raise ValueError("Message cannot be empty.")
+
         with open(f"{log_file}.log", mode, encoding="utf8") as f:
             f.write(f"{message}\n")
+
+    def create_logo(self, logo: str, font: str = "big") -> None:
+        """
+        Creates a logo using the specified font and displays it.
+
+        Args:
+        logo (str): The text to use for the logo.
+        font (str): The font to use for the logo. Defaults to "big".
+        """
+        if not logo:
+            raise ValueError("Logo cannot be empty.")
+
+        figlet_instance = Figlet(font=font)
+        logo_string = figlet_instance.renderText(logo)
+        self.display_logo(logo_string)
+
+    def display_logo(self, logo: str) -> None:
+        """
+        Displays a logo.
+
+        Args:
+        logo (str): The logo to display.
+        """
+        if not logo:
+            raise ValueError("Logo cannot be empty.")
+
+        centered_logo = Center.XCenter(Colorate.Vertical(Colors.white_to_blue, logo, 1))
+        divider = Center.XCenter(Colorate.Vertical(Colors.white_to_blue, "────────────────────────────────────────────\n", 1))
+
+        print(centered_logo)
+        print(divider)

@@ -202,3 +202,15 @@ class Logger:
         - **kwargs: Keyword arguments to pass to tqdm.
         """
         return self.progress_bars.progress_bar(iterable, desc, *args, **kwargs)
+    
+    def create_logo(self, text: str = "") -> str:
+        """
+        Creates a logo using the specified font.
+
+        Args:
+            text (str): The text to be used in the logo.
+
+        Returns:
+            str: Formatted logo.
+        """
+        return self.logger_utils.create_logo(text)
