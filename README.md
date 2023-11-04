@@ -19,7 +19,7 @@ Normal logs for your tools
 from kwslogger import Logger
 
 # Create a logger instance
-logger = Logger(debug=True, log_to_file=True, log_file_name="mylogs", log_file_mode="a")
+logger = Logger(log_level="ANY", log_to_file=True, log_file_name="mylogs", log_file_mode="a")
 
 # Clear the console
 logger.clear()
@@ -40,7 +40,7 @@ Animated Sleeps
 from kwslogger import Logger
 
 # Create a logger instance
-logger = Logger(debug=True)
+logger = Logger(log_level="ANY", log_to_file=True, log_file_name="mylogs", log_file_mode="a")
 
 logger.sleep("Waiting for 1 second...", 1)
 ```
@@ -50,7 +50,7 @@ Run functions while you showing the spinner
 from kwslogger import Logger
 
 # Create a logger instance
-logger = Logger(debug=True)
+logger = Logger(log_level="ANY", log_to_file=True, log_file_name="mylogs", log_file_mode="a")
 
 def test_func(number1, number2):
     answer = number1 + number2
