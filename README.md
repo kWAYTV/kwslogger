@@ -75,9 +75,8 @@ logger = Logger(log_level="WARNING", log_to_file=True, log_file_name="mylogs", l
 
 print(logger.can_log("INFO")) # --> True because it's below warning level. Would log and write to the file.
 print(logger.can_log("RATELIMIT")) # --> False because it's above the warning level. Wouldn't log nor write to the file.
-
-# You don't need to filter out the logs with this method, it's done automatically, this is just an example and a method added to check whether a log should be logged or not.
 ```
+You don't need to filter out the logs with this method, it's done automatically, this is just an example and a method added to check whether a log should be logged or not.
 
 Create progress bars with ease.
 ```python
