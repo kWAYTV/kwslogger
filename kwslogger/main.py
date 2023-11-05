@@ -17,6 +17,7 @@ class Logger:
     - log_to_file (bool): Whether to log messages to a file or not.
     - log_file_name (str): The name of the log file to use.
     - log_file_mode (str): The mode to use when opening the log file.
+    - timestamps_timezone (str): The pyqtz timezone to use for timestamps.
 
     Methods:
     - clear(): Clears the console screen.
@@ -32,7 +33,7 @@ class Logger:
     - sleep(message: str, seconds: int): Sleeps for the given number of seconds with a spinner.
     - run_with_spinner(func: callable, message: str = "", timer: bool = Flase,*args, **kwargs): Runs a function with a spinner and optional timer.
     """
-    def __init__(self, log_level: str = "ANY", log_to_file: bool = False, log_file_name: str = None, log_file_mode: str = None, log_file_format: str = ""):
+    def __init__(self, log_level: str = "ANY", log_to_file: bool = False, log_file_name: str = None, log_file_mode: str = None, timestamps_timezone: str = "Europe/Madrid"):
         """
         Initializes a new instance of the Logger class.
 
@@ -46,11 +47,12 @@ class Logger:
         self.log_to_file = log_to_file
         self.log_file_name = log_file_name
         self.log_file_mode = log_file_mode
+        self.timestamps_timezone = timestamps_timezone
         self.spinners = Spinners()
         self.logger_utils = LoggerUtils()
-        self.datetime_helper = DateHelper()
         self.progress_bars = ProgressBars()
         self.log_levels_controller = LogLevels()
+        self.datetime_helper = DateHelper(self.timestamps_timezone)
 
         init(autoreset=True)
 
@@ -160,6 +162,17 @@ class Logger:
         - seconds (int): The number of seconds to sleep.
         """
         return self.spinners.sleep_with_spinner(message, seconds)
+
+    def get_current_timestamp(self) -> str:
+        """
+        Returns the current timestamp.
+
+        Returns:
+        --------
+        str
+            The current timestamp.
+        """
+        return self.datetime_helper.get_current_timestamp()
 
     def run_with_spinner(self, func: callable, message: str = "", timer: bool = False,  *args, **kwargs):
         """

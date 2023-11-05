@@ -6,7 +6,7 @@ This script installs the kwslogger package along with its dependencies.
 
 from setuptools import setup, find_packages
 
-VERSION = '0.2.9'
+VERSION = '0.3.0'
 DESCRIPTION = "My own logging library so i don't need to port it to every single project i make."
 
 setup(

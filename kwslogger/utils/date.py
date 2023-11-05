@@ -9,8 +9,8 @@ class DateHelper:
     timezone (pytz.timezone): The timezone to use for date and time operations.
     """
 
-    def __init__(self):
-        self.timezone = pytz.timezone('Europe/Madrid')
+    def __init__(self, timezone: str = "Europe/Madrid"):
+        self.timezone = pytz.timezone(timezone)
 
     def get_current_timestamp(self) -> str:
         """
