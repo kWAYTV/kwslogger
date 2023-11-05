@@ -31,6 +31,29 @@ class LoggerUtils:
         with open(f"{log_file}.log", mode, encoding="utf8") as f:
             f.write(f"{message}\n")
 
+    def get_log_file_length(self, log_file: str = "mylogs") -> int:
+        """
+        Returns the length of a log file.
+
+        Args:
+        log_file (str): The name of the log file. Defaults to "mylogs".
+
+        Returns:
+        int: The length of the log file.
+        """
+        with open(f"{log_file}.log", "r", encoding="utf8") as f:
+            return len(f.readlines())
+
+    def wipe_log_file(self, log_file: str = "mylogs") -> None:
+        """
+        Wipes the contents of a log file.
+
+        Args:
+        log_file (str): The name of the log file. Defaults to "mylogs".
+        """
+        with open(f"{log_file}.log", "w", encoding="utf8") as f:
+            f.write("")
+
     def create_logo(self, logo: str, font: str = "big") -> None:
         """
         Creates a logo using the specified font and displays it.

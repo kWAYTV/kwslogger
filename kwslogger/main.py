@@ -54,6 +54,13 @@ class Logger:
         self.log_levels_controller = LogLevels()
         self.datetime_helper = DateHelper(self.timestamps_timezone)
 
+        if self.log_to_file and self.log_file_mode == "w+":
+            # This will wipe the log file on logger initialization
+            with open(f"{log_file_name}.log", "w") as _:
+                pass
+            # Set to append for subsequent log calls
+            self.log_file_mode = "a"
+
         init(autoreset=True)
 
     def clear(self) -> None:
@@ -73,10 +80,10 @@ class Logger:
         """
         if not self.can_log(type): return
         
-        current_time = self.datetime_helper.get_current_timestamp()
+        current_time = self.datetime_helper.get_formatted_timestamp()
         
         if self.log_to_file:
-            file_string = f"{current_time} • [{type}] {message}"
+            file_string = f"{self.log_file_mode} | {current_time} • [{type}] {message}"
             self.logger_utils.log_to_file(file_string, self.log_file_name, self.log_file_mode)
 
         return print(f"{Style.DIM}{current_time} • {Style.RESET_ALL}{Style.BRIGHT}{color}[{Style.RESET_ALL}{type}{Style.BRIGHT}{color}] {Style.RESET_ALL}{Style.BRIGHT}{Fore.WHITE}{message}{Style.RESET_ALL}")
@@ -173,6 +180,17 @@ class Logger:
             The current timestamp.
         """
         return self.datetime_helper.get_current_timestamp()
+    
+    def get_formatted_timestamp(self) -> str:
+        """
+        Returns the current timestamp in the format "dd/mm/yyyy • hh:mm:ss".
+
+        Returns:
+        --------
+        str
+            The current timestamp in the format "dd/mm/yyyy • hh:mm:ss".
+        """
+        return self.datetime_helper.get_formatted_timestamp()
 
     def run_with_spinner(self, func: callable, message: str = "", timer: bool = False,  *args, **kwargs):
         """

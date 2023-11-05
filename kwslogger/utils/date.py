@@ -12,7 +12,16 @@ class DateHelper:
     def __init__(self, timezone: str = "Europe/Madrid"):
         self.timezone = pytz.timezone(timezone)
 
-    def get_current_timestamp(self) -> str:
+    def get_current_timestamp(self) -> datetime:
+        """
+        Get the current timestamp in the specified timezone.
+
+        Returns:
+        datetime: The current timestamp.
+        """
+        return datetime.now(self.timezone)
+
+    def get_formatted_timestamp(self) -> str:
         """
         Get the current timestamp in the specified timezone.
 
