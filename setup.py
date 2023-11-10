@@ -6,7 +6,7 @@ This script installs the kwslogger package along with its dependencies.
 
 from setuptools import setup, find_packages
 
-VERSION = '0.3.1'
+VERSION = '0.3.2'
 DESCRIPTION = "My own logging library so i don't need to port it to every single project i make."
 
 setup(
@@ -17,9 +17,10 @@ setup(
         "colorama",
         "pystyle",
         "pyfiglet",
-        "pytz",
+        "qrcode"
         "yaspin",
         "tqdm",
+        "pytz",
     ],
     author="kWAY",
     author_email="admin@kwayservices.top",

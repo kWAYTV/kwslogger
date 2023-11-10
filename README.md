@@ -8,6 +8,7 @@ Welcome to `kwslogger`, a tailored logging solution for Python developers who de
 - ⛔ Filter out logs with the log levels.
 - 📈 Progress bar & spinner support.
 - 🤖 ASCII logo creation with just 1 call.
+- 🧑‍💻 Generate QR codes easily.
 
 ## ⚙️ Installation
 ```bash
@@ -105,6 +106,15 @@ logger.create_logo("Pluto Reportbot")
 You can use a custom `pyfiglet` font with the following
 ```python
 logger.create_logo("Pluto Reportbot", font = "slant")
+```
+
+Generate QR Codes with 1 call
+```python
+from kwslogger import Logger
+
+logger = Logger()
+
+logger.generate_qr("https://hvh.bio/")
 ```
 
 ## 🤝 Contributing

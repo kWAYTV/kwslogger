@@ -4,6 +4,7 @@ from kwslogger.utils.date import DateHelper
 from kwslogger.utils.logger import LoggerUtils
 from kwslogger.controllers.spinners import Spinners
 from kwslogger.controllers.loglevel import LogLevels
+from kwslogger.controllers.qr import QRCodeGenerator
 from kwslogger.controllers.progress_bars import ProgressBars
 
 
@@ -51,6 +52,7 @@ class Logger:
         self.spinners = Spinners()
         self.logger_utils = LoggerUtils()
         self.progress_bars = ProgressBars()
+        self.qr_generator = QRCodeGenerator()
         self.log_levels_controller = LogLevels()
         self.datetime_helper = DateHelper(self.timestamps_timezone)
 
@@ -245,3 +247,15 @@ class Logger:
             str: Formatted logo.
         """
         return self.logger_utils.create_logo(text)
+
+    def generate_qr(self, text: str):
+        """
+        Generates a QR code with the given text.
+
+        Args:
+            text (str): The text to generate the QR code with.
+
+        Returns:
+            str: The name of the generated QR code.
+        """
+        return self.qr_generator.save_qr_code(text)
